@@ -190,18 +190,21 @@ const someoneToLove = list => {
  */
 
 function objectKeys(objectOfHobbies) {
-  // Your code here
-  // const keys = Object.keys(objectOfHobbies)
-  // const answer = keys.map(key => {
-  //   const hobby = objectOfHobbies[key]
-  //   return `${key} - ${hobby.title}`
-  // })
-  const entries = Object.entries(objectOfHobbies)
-
-  const answer = entries.map(([key, value]) => {
-    return `${key} - ${value.title}`
-  })
+  // ['pandas', 'miniatures']
+  const hobbyKeys = Object.keys(objectOfHobbies)
+  // Take that array of just the keys and turn it into something new
+  const answer = hobbyKeys.map(
+    // Take that key, add a ' - ' then use that key to go fetch the VALUE and take just the title
+    hobbyKey => `${hobbyKey} - ${objectOfHobbies[hobbyKey].title}`
+  )
+  return answer
 }
+
+// const entries = Object.entries(objectOfHobbies)
+
+// const answer = entries.map(([key, value]) => {
+//   return `${key} - ${value.title}`
+// })
 
 // ...
 
@@ -461,7 +464,7 @@ const tests = [
       const answer = Object.keys(objectOfHobbies).map(
         key => `${key} - ${objectOfHobbies[key].title}`
       )
-      return compare(objectKeys(objectKeys), answer)
+      return compare(objectKeys(objectOfHobbies), answer)
     }
   }
 ]
